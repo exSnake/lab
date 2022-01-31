@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,27 +63,35 @@ public class MainActivity extends AppCompatActivity {
         Button vendiBtn = findViewById(R.id.vendiBtn);
         TextView txtQuantity = findViewById(R.id.inputQuantity);
         compraBtn.setOnClickListener(v -> {
-            Item i;
-            if(!txtQuantity.getText().toString().equals("")) {
-                i = new Item(image);
-                i.setQuantita(Integer.parseInt(txtQuantity.getText().toString()));
-                i.setDescrizione("Acquisto");
-                txtQuantity.setText("");
-                items.add(i);
-                customAdapter.add(i);
-            }
+            addToList(txtQuantity, "Acquisto");
         });
         vendiBtn.setOnClickListener(v -> {
-            Item i;
-            if(!txtQuantity.getText().toString().equals("")) {
-                i = new Item(image);
-                i.setQuantita(Integer.parseInt(txtQuantity.getText().toString()));
-                i.setDescrizione("Vendita");
-                txtQuantity.setText("");
-                items.add(i);
-                customAdapter.add(i);
-            }
+            addToList(txtQuantity, "Vendita");
         });
+    }
+
+    private void addToList(TextView txtQuantity, String acquisto) {
+        Item i;
+        if (!txtQuantity.getText().toString().equals("")) {
+            int qnt = 0;
+            try {
+                qnt = Integer.parseInt(txtQuantity.getText().toString());
+            } catch (Exception e) {
+                Toast.makeText(this, "Inserisci una quantità valida", Toast.LENGTH_LONG).show();
+                return;
+            }
+            if(qnt <= 0) {
+                txtQuantity.setText("");
+                Toast.makeText(this, "Inserisci una quantità valida", Toast.LENGTH_LONG).show();
+                return;
+            }
+            i = new Item(image);
+            i.setQuantita(Integer.parseInt(txtQuantity.getText().toString()));
+            i.setDescrizione(acquisto);
+            txtQuantity.setText("");
+            items.add(i);
+            customAdapter.add(i);
+        }
     }
 
     @Override

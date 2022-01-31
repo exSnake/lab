@@ -32,6 +32,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:text="Quantita"
+                        android:textSize="20sp"
                         android:layout_weight="3"/>
                     <EditText
                         android:padding="5dp"
@@ -48,24 +49,27 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <Button
-                        android:background="@drawable/button"
+                        android:backgroundTint="@color/orange_400"
+                        android:layout_marginRight="10dp"
                         android:id="@+id/compraBtn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Compra"
                         android:layout_gravity="center"
-                        android:layout_weight="0.01"/>
+                        android:layout_weight="1"/>
                     <Button
-                        android:background="@drawable/button"
+                        android:layout_marginLeft="10dp"
+                        android:backgroundTint="@color/orange_400"
                         android:id="@+id/vendiBtn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Vendi"
                         android:layout_gravity="center"
-                        android:layout_weight="0.01"/>
+                        android:layout_weight="1"/>
                 </LinearLayout>
 
                 <TextView
+                    android:layout_marginTop="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="left"
@@ -75,10 +79,8 @@
                     android:id="@+id/mylistview"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:background="@drawable/customborderround"
-                    android:layout_weight="0.97"/>
-
-
+                    android:background="@drawable/customborder"
+                    android:layout_weight="1"/>
             </LinearLayout>
     </LinearLayout>
 </RelativeLayout>
